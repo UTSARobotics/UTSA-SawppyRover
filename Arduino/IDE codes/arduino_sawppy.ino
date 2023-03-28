@@ -7,7 +7,7 @@
  *
  * LewanSoul serial bus servo control code (in lewansoul.cpp) subject to LewanSoul terms and conditions.
  *
- * Remaining code created by Roger Cheng are released under MIT license.
+ * Remaining code created by Roger disCheng are released under MIT license.
  */
 
 #include <math.h>
@@ -28,7 +28,8 @@
 JoyDrive jd(STEERING_PIN, VELOCITY_PIN);
 
 #ifdef LEWANSOUL
-LewanSoul lss(false);
+LewanSoul lss = false; // Initializes lss object with debug on lewansoul.h
+//Replace with LX_16A Rover; (Defines the object)
 #endif
 
 // Hold information about wheel arrangement on rover. This information
@@ -41,6 +42,7 @@ typedef struct RoverWheel
   bool rollServoInverted; // Whether to invert wheel rolling front/back direction
   int steerServoId; // Serial bus ID of servo responsible for wheel steering
   float steerTrim; // Adjustment in angle degrees to trim steering center position
+  // 
 } RoverWheel;
 
 // Array of wheels on rover
@@ -116,7 +118,9 @@ typedef struct ServoCommand {
   float angle;
   float radius;
   float speed;
-} ServoCommand;
+  // S = radius(from center or wheel?) times angle [Arc](3/28/2023 UPDATE)
+  // R = sqrt(y^2+(x+radius)^2)(3/28/2023 UPDATE)
+  } ServoCommand;
 
 ServoCommand servoCommands[6];
 
@@ -207,9 +211,9 @@ void setup()
   pinMode(INPLACE_BUTTON, INPUT);
   digitalWrite(INPLACE_BUTTON, HIGH); // Button pulls LOW when pressed
 
-#ifdef LEWANSOUL
+#ifdef LEWANSOUL // RECONFIGURE for Servo-LX16A
   // LewanSoul serial servo code is taking over Serial port.
-  lss.setup();
+  lss.setup(); //change it to Rover.setup(Sedine setup in Servo-LX16A.h file
 #endif
 
 #ifdef PRINTCMD
@@ -392,7 +396,7 @@ void loop()
     }
   }
   
-#ifdef LEWANSOUL
+#ifdef LEWANSOUL //Replace section with Servo-LX16A.h code
   // All angles and speeds calculated, send the commands accounting
   // for steering trim offset and inverting speed where needed
   for (wheel = 0; wheel < 6; wheel++)
@@ -410,7 +414,7 @@ void loop()
     {
       invert = 1;
     }
-    lss.spinAt(Chassis[wheel].rollServoId, servoCommands[wheel].speed * invert);
+    lss.spinAt(Chassis[wheel].rollServoId, servoCommands[wheel].speed * invert); 
   }
 #endif
 
