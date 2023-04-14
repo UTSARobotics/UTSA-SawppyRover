@@ -25,7 +25,7 @@
 #define INPLACE_BUTTON 2 // Button to trigger turn-in-place mode.
 
 #define ID1 1 //Driver ID for Rolling Servo
-#define ID2 2 //Driver ID for Steering Servo (Torque)
+#define ID2 2 //Driver ID for Steering Servo (Torque Force)
 
 // Initialize joystick module
 JoyDrive jd(STEERING_PIN, VELOCITY_PIN);
