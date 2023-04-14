@@ -24,6 +24,9 @@
 #define VELOCITY_PIN 0 // Analog pin to control speed
 #define INPLACE_BUTTON 2 // Button to trigger turn-in-place mode.
 
+#define ID1 1 //Driver ID for Rolling Servo
+#define ID2 2 //Driver ID for Steering Servo (Torque)
+
 // Initialize joystick module
 JoyDrive jd(STEERING_PIN, VELOCITY_PIN);
 
@@ -51,54 +54,54 @@ const RoverWheel Chassis[] = {
   {
     -9.125, // x
     11.375, // y
-    25,     // roll ID
+    ID1,     // roll ID
     false,  // roll inverted
-    23,     // steer ID
+    ID2,     // steer ID
     -4      // steer trim
   },
   // front right
   {
      9.125, // x
     11.375, // y
-    27,     // roll ID
+    ID1,     // roll ID
     true,   // roll inverted
-    29,     // steer ID
+    ID2,     // steer ID
     -4      // steer trim
   },
   // mid left
   {
     -10.375,// x
     0,      // y
-    21,     // roll ID
+    ID1,     // roll ID
     false,  // roll inverted
-    -1,     // steer ID
+    ID2,     // steer ID
     0       // steer trim
   },
   // mid right
   {
     10.375, // x
     0,      // y
-    22,     // roll ID
+    ID1,     // roll ID
     true,   // roll inverted
-    -1,     // steer ID
+    ID2,     // steer ID
     0       // steer trim
   },
   // rear left
   {
     -9,     // x
     -10,    // y
-    20,     // roll ID
+    ID1,     // roll ID
     false,  // roll inverted
-    24,     // steer ID
+    ID2,     // steer ID
     2       // steer trim
   },
   // rear right
   {
      9,     // x
     -10,    // y
-    28,     // roll ID
+    ID1,     // roll ID
     true,   // roll inverted
-    26,     // steer ID
+    ID2,     // steer ID
     4       // steer trim
   }
 };
