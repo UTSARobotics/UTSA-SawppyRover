@@ -44,7 +44,6 @@ typedef struct RoverWheel
   bool rollServoInverted; // Whether to invert wheel rolling front/back direction
   int steerServoId; // Serial bus ID of servo responsible for wheel steering
   float steerTrim; // Adjustment in angle degrees to trim steering center position
-  // 
 } RoverWheel;
 
 // Array of wheels on rover
