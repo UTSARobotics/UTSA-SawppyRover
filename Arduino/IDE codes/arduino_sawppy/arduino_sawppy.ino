@@ -109,7 +109,7 @@ const RoverWheel Chassis[] = {
 #define FRONT_RIGHT 1
 #define MID_LEFT 2
 
-// Using information above, the maximum steering angle for a front wheel
+// Using information above, the maximum steering angle for a front wheels
 float maxSteering;
 
 // Store calculation of servo angle and speed before we send them as commands
