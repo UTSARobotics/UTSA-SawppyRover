@@ -18,7 +18,6 @@
 // Output select - only one of the following should be uncommented
 #define LEWANSOUL 1 // Output to LewanSoul serial bus servo commands
 //#define PRINTCMD 1 // Output to serial debug monitor
-// Output select end
 
 #define STEERING_PIN 1 // Analog pin to control steering angle
 #define VELOCITY_PIN 0 // Analog pin to control speed
